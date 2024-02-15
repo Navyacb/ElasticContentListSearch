@@ -29,7 +29,7 @@ interface IContactDataType{
     searchResult : ISearchData[],
     searchDispatch : React.Dispatch<{
         type: string;
-        payload: any;
+        payload: unknown;
     }>,
 }
 

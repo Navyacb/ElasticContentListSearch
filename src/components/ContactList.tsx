@@ -1,11 +1,10 @@
 import { useContext } from "react"
 import { ContactContextData, ISearchData } from "../state-management/ContactContextData"
 import { Avatar, Card, Image, SimpleGrid, Stack, Text } from "@mantine/core"
-import styles from './ContactList.module.css'
 
 const ContactList = ()=>{
 
-    const {searchResult,searchDispatch} = useContext(ContactContextData)
+    const {searchResult,searchDispatch,contactData} = useContext(ContactContextData)
 
     const updateSearchResult = (data:ISearchData)=>{
         searchDispatch({
@@ -20,22 +19,22 @@ const ContactList = ()=>{
     }
     
     return(
-            <SimpleGrid cols={{ base: 1, xs: 4 ,xl:6}} 
+            <SimpleGrid cols={{ base: 1, xs: 4 ,xl:5}} 
                         mx={{ base: 30, sm: 70 }} 
                         my={100}
             >
                 {
-                    searchResult.length>0 ?
+                    searchResult.length>0?
                     searchResult.map(data=>{
                         return(
                             <Card p="md"  shadow="md" withBorder 
                                 onMouseEnter={() => updateSearchResult(data)}
                                 onMouseLeave={() => updateSearchResult(data)}
                                 key={data.id}
-                                className={styles.card}
+                                h={250}
                             >
                                 <Card.Section>
-                                    <Image src={data.profile_image} height={data.isHover?100 :150} fit="cover" style={{minHeight:data.isHover? '100px' : '150px'}} />
+                                    <Image src={data.profile_image} height={data.isHover?80 :150} fit="cover" style={{minHeight:data.isHover? '100px' : '150px'}} />
                                     <Avatar
                                     src={data.icon}
                                     size={34}

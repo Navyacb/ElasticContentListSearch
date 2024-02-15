@@ -1,4 +1,4 @@
-import { AppShell } from "@mantine/core"
+import { AppShell, LoadingOverlay } from "@mantine/core"
 import Header from "./components/Header"
 import { useReducer } from "react"
 import axios from 'axios'
@@ -34,7 +34,7 @@ const App = ()=>{
 
 
   //Using react-query to update the state with contact data fetched from api
-  const {data:contactData} = useQuery({
+  const {data:contactData,isLoading} = useQuery({
     queryFn : ()=>fetchContactData(),
     queryKey : ["ContactData"],
     onSuccess : (data) => {
@@ -49,12 +49,18 @@ const App = ()=>{
 
   return (
     <ContactContextData.Provider value={{contactData,searchResult,searchDispatch}}>
-      <AppShell>
-        <AppShell.Header>
-            <Header/>
-        </AppShell.Header>
-        <ContactList/>
-      </AppShell>
+      <LoadingOverlay
+        visible={isLoading}
+        overlayProps={{ blur: 2 }}
+      />
+        {contactData &&
+          <AppShell>
+          <AppShell.Header>
+              <Header/>
+          </AppShell.Header>
+          <ContactList/>
+        </AppShell>
+        }
     </ContactContextData.Provider>
   )
 }
