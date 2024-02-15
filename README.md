@@ -13,7 +13,7 @@ Src Folder:
 1. Main.tsx : where the React application starts
 2. App.tsx : Parent component
 3. Components Folder : Contains all child components
-    a. Header.tsx : Contains the header coder
-    b. ContactList.tsx : Contains the search list code
-4. state-management : Contains the state management details using use Context hook
-    a. ContactContextdata.tsx: Contains the type of contact data
+4. Header.tsx : Contains the header coder
+5. ContactList.tsx : Contains the search list code
+6. state-management : Contains the state management details using use Context hook
+7. ContactContextdata.tsx: Contains the type of contact data
