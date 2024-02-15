@@ -4,7 +4,7 @@ import { Avatar, Card, Image, SimpleGrid, Stack, Text } from "@mantine/core"
 
 const ContactList = ()=>{
 
-    const {searchResult,searchDispatch,contactData} = useContext(ContactContextData)
+    const {searchResult,searchDispatch} = useContext(ContactContextData)
 
     const updateSearchResult = (data:ISearchData)=>{
         searchDispatch({
